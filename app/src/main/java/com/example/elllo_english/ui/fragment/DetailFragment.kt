@@ -11,12 +11,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.example.elllo_english.R
 import com.example.elllo_english.data.models.Script
 import com.example.elllo_english.ui.adapter.ViewPagerAdapter
 import com.example.elllo_english.utils.AppLogger
+import com.example.elllo_english.viewmodel.ViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.*
@@ -30,6 +32,7 @@ class DetailFragment : Fragment() {
     private lateinit var tabLayout: TabLayout
     private lateinit var timer: Timer
     private lateinit var titles: ArrayList<String>
+    private lateinit var viewModel :ViewModel
 
     private val args: DetailFragmentArgs by navArgs()
 
@@ -60,11 +63,8 @@ class DetailFragment : Fragment() {
 
         AppLogger.info("MediaPlayer")
         val mediaPlayer = MediaPlayer()
-        val audioUrl =
-            "https://data.chiasenhac.com/down2/2256/1/2255882-3e008551/128/Chi%20La%20Mot%20Cuoc%20Gap%20Go%20-%20Ham%20Dang_%20Nam%20T.mp3"
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
-        mediaPlayer.setDataSource(audioUrl)
-        mediaPlayer.prepareAsync()
+        viewModel=ViewModelProvider(this).get(ViewModel::class.java)
+        viewModel.prepareAudio(mediaPlayer)
 
         seekBar.progress = 0
         seekBar.max = 100
