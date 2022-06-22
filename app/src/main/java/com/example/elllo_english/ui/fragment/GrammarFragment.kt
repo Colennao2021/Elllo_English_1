@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
 import com.example.elllo_english.data.Repository
-import com.example.elllo_english.data.models.Grammar
 import com.example.elllo_english.ui.adapter.GrammarAdapter
 import com.example.elllo_english.utils.AppLogger
 import com.example.elllo_english.viewmodel.ViewModel
@@ -64,7 +63,6 @@ class GrammarFragment : Fragment() {
                 updating.visibility = View.VISIBLE
                 warning.visibility = View.VISIBLE
             }
-
         })
     }
 }

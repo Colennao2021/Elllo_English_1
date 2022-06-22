@@ -12,7 +12,6 @@
         android:layout_height="50dp"
         android:background="@color/primary_color"
         android:elevation="4dp"
-        android:visibility="visible"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <fragment

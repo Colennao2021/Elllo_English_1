@@ -3,15 +3,12 @@ package com.example.elllo_english.ui.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
 import com.example.elllo_english.data.models.Course
-import com.example.elllo_english.data.models.Level
 import com.example.elllo_english.ui.fragment.CourseFragmentDirections
-import com.example.elllo_english.ui.fragment.LevelFragmentDirections
 import kotlinx.android.synthetic.main.item_course.view.*
 
 class CourseAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

@@ -1,9 +1,5 @@
 package com.example.elllo_english.utils
 
-import android.os.FileUtils
-import android.system.Os.write
-import java.io.File
-import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 

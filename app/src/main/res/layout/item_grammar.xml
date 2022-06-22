@@ -47,5 +47,4 @@
         app:layout_constraintTop_toBottomOf="@+id/title_grammar"
         app:layout_constraintLeft_toLeftOf="parent"/>
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

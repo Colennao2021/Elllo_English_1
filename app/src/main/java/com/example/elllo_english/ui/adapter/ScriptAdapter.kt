@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
-import com.example.elllo_english.data.models.Course
 import com.example.elllo_english.data.models.Script
 import kotlinx.android.synthetic.main.item_script.view.*
 

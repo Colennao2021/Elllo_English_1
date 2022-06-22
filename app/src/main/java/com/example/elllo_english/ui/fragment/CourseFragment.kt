@@ -1,6 +1,5 @@
 package com.example.elllo_english.ui.fragment
 
-import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,20 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.view.isGone
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
 import com.example.elllo_english.data.Repository
-import com.example.elllo_english.data.models.Course
-import com.example.elllo_english.data.models.Level
 import com.example.elllo_english.ui.adapter.CourseAdapter
 import com.example.elllo_english.utils.AppLogger
 import com.example.elllo_english.viewmodel.ViewModel

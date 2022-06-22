@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
 import com.example.elllo_english.data.models.Grammar
-import com.example.elllo_english.data.models.Script
 import kotlinx.android.synthetic.main.item_grammar.view.*
 
 class GrammarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

@@ -22,11 +22,4 @@ class Repository(private val dao: DAO) {
 
     val getScript: LiveData<List<Script>> = dao.getScript(courseId)
 
-    fun prepareAudio(mediaPlayer: MediaPlayer) {
-        val audioUrl =
-            "https://data.chiasenhac.com/down2/2256/3/2255990-f08fd09d/128/The%20Journey%20-%20Loona.mp3"
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
-        mediaPlayer.setDataSource(audioUrl)
-        mediaPlayer.prepareAsync()
-    }
 }

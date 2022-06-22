@@ -1,38 +1,31 @@
 package com.example.elllo_english.ui.fragment
 
-import android.media.AudioManager
-import android.media.MediaPlayer
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SeekBar
-import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.example.elllo_english.R
-import com.example.elllo_english.data.models.Script
 import com.example.elllo_english.ui.adapter.ViewPagerAdapter
 import com.example.elllo_english.utils.AppLogger
 import com.example.elllo_english.viewmodel.ViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.math.roundToInt
 
 class DetailFragment : Fragment() {
     private lateinit var play: Button
     private lateinit var seekBar: SeekBar
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
-    private lateinit var timer: Timer
     private lateinit var titles: ArrayList<String>
-    private lateinit var viewModel :ViewModel
+    private lateinit var viewModel: ViewModel
+    private lateinit var timer: Timer
 
     private val args: DetailFragmentArgs by navArgs()
 
@@ -52,55 +45,17 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        loadCourseID()
         loadAudio()
         loadTablayout()
-        loadCourseID()
     }
 
     private fun loadAudio() {
-        var isPrepare = false
-        var isStarted = false
+        timer =Timer()
 
         AppLogger.info("MediaPlayer")
-        val mediaPlayer = MediaPlayer()
         viewModel=ViewModelProvider(this).get(ViewModel::class.java)
-        viewModel.prepareAudio(mediaPlayer)
-
-        seekBar.progress = 0
-        seekBar.max = 100
-        timer = Timer()
-
-        AppLogger.info("MediaPlayer prepare success")
-        mediaPlayer.setOnPreparedListener {
-            isPrepare = true
-            val timerTask = object : TimerTask() {
-                override fun run() {
-                    if (mediaPlayer.duration > 0)
-                        seekBar.progress =
-                            ((mediaPlayer.currentPosition.toFloat() / mediaPlayer.duration.toFloat()) * 100.0f).roundToInt()
-                    Log.d("tag", mediaPlayer.currentPosition.toString())
-                }
-            }
-            timer.schedule(timerTask, 0, 1000)
-        }
-
-        AppLogger.info("Play")
-        play.setOnClickListener {
-            if (isStarted == false) {
-                play.setBackgroundResource(R.drawable.ic_baseline_pause)
-
-                if (isPrepare && !isStarted) {
-                    isStarted = true
-                    mediaPlayer.start()
-                }
-                Toast.makeText(requireContext(),"Audio Play",Toast.LENGTH_SHORT).show()
-            } else if (isStarted == true) {
-                play.setBackgroundResource(R.drawable.ic_baseline_play)
-                isStarted = false
-                mediaPlayer.pause()
-                Toast.makeText(requireContext(),"Audio Pause",Toast.LENGTH_SHORT).show()
-            }
-        }
+        viewModel.prepareAudio(seekBar,play,timer)
     }
 
     private fun loadCourseID() {
@@ -115,7 +70,7 @@ class DetailFragment : Fragment() {
 
         viewPager.adapter = ViewPagerAdapter(requireActivity())
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
-            tab.text = titles.get(position)
+            tab.text = titles[position]
         }.attach()
     }
 
