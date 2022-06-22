@@ -30,8 +30,8 @@ class ScriptFragment() : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_script, container, false)
         recycleView = view.findViewById(R.id.script_recycleview)
-        updating=view.findViewById(R.id.updating_script)
-        warning=view.findViewById(R.id.warning)
+        updating = view.findViewById(R.id.updating_script)
+        warning = view.findViewById(R.id.warning)
         return view
     }
 
@@ -53,15 +53,15 @@ class ScriptFragment() : Fragment() {
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
         viewModel.getScript.observe(viewLifecycleOwner, Observer { scripts ->
             if (scripts.isNotEmpty()) {
-                recycleView.visibility=View.VISIBLE
-                updating.visibility=View.GONE
-                warning.visibility=View.GONE
+                recycleView.visibility = View.VISIBLE
+                updating.visibility = View.GONE
+                warning.visibility = View.GONE
                 adapter.setListScript(scripts)
             } else {
                 AppLogger.info("Default script if null")
-                updating.visibility=View.VISIBLE
-                warning.visibility=View.VISIBLE
-                recycleView.visibility=View.GONE
+                updating.visibility = View.VISIBLE
+                warning.visibility = View.VISIBLE
+                recycleView.visibility = View.GONE
             }
         })
     }

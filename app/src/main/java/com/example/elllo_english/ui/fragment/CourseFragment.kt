@@ -21,8 +21,8 @@ import com.example.elllo_english.viewmodel.ViewModel
 class CourseFragment : Fragment() {
     private lateinit var viewModel: ViewModel
     private lateinit var recycleView: RecyclerView
-    private lateinit var updating :TextView
-    private lateinit var warning :ImageView
+    private lateinit var updating: TextView
+    private lateinit var warning: ImageView
 
     private val args: CourseFragmentArgs by navArgs()
 
@@ -33,8 +33,8 @@ class CourseFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_course, container, false)
         recycleView = view.findViewById(R.id.course_recycleview)
-        updating=view.findViewById(R.id.updating_course)
-        warning=view.findViewById(R.id.warning)
+        updating = view.findViewById(R.id.updating_course)
+        warning = view.findViewById(R.id.warning)
         return view
 
     }
@@ -53,13 +53,13 @@ class CourseFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
         viewModel.getCourse.observe(viewLifecycleOwner, Observer { courses ->
             if (courses.isNotEmpty()) {
-                updating.visibility=View.GONE
-                warning.visibility=View.GONE
-                recycleView.visibility=View.VISIBLE
+                updating.visibility = View.GONE
+                warning.visibility = View.GONE
+                recycleView.visibility = View.VISIBLE
                 adapter.setListCourse(courses)
             } else {
-                updating.visibility=View.VISIBLE
-                warning.visibility=View.VISIBLE
+                updating.visibility = View.VISIBLE
+                warning.visibility = View.VISIBLE
             }
         })
 
