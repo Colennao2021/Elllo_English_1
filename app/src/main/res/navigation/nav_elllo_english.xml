@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_elllo_english"
+    app:startDestination="@id/levelFragment">
+    <fragment
+        android:id="@+id/levelFragment"
+        android:name="com.example.elllo_english.ui.fragment.LevelFragment"
+        android:label="Level"
+        tools:layout="@layout/fragment_level">
+        <action
+            android:id="@+id/action_levelFragment_to_courseFragment"
+            app:destination="@id/courseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/courseFragment"
+        android:name="com.example.elllo_english.ui.fragment.CourseFragment"
+        android:label="Course"
+        tools:layout="@layout/fragment_course" >
+        <action
+            android:id="@+id/action_courseFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <argument
+            android:name="level"
+            app:argType="com.example.elllo_english.data.models.Level" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.elllo_english.ui.fragment.DetailFragment"
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="course"
+            app:argType="com.example.elllo_english.data.models.Course" />
+    </fragment>
+</navigation>
