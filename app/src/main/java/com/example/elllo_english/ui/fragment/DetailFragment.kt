@@ -27,7 +27,6 @@ class DetailFragment : Fragment() {
     private lateinit var viewPager: ViewPager2
     private lateinit var tabLayout: TabLayout
     private lateinit var viewModel: ViewModel
-    private lateinit var timer: Timer
 
     private val args: DetailFragmentArgs by navArgs()
 
@@ -54,27 +53,25 @@ class DetailFragment : Fragment() {
 
     private fun loadAudio() {
         var isStarted = false
-        timer = Timer()
-
         seekBar.max = 100
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
         viewModel.seekBarProcess.observe(viewLifecycleOwner, Observer { temp ->
             seekBar.progress = temp
         })
-        viewModel.prepareAudio(timer)
+        viewModel.prepareAudio()
 
         AppLogger.info("Play")
         play.setOnClickListener {
             if (!isStarted) {
                 play.setBackgroundResource(R.drawable.ic_baseline_pause)
                 Toast.makeText(requireContext(), "Audio Play", Toast.LENGTH_SHORT).show()
-                isStarted = true
                 viewModel.start()
+                isStarted = true
             } else if (isStarted) {
                 play.setBackgroundResource(R.drawable.ic_baseline_play)
                 Toast.makeText(requireContext(), "Audio Pause", Toast.LENGTH_SHORT).show()
-                isStarted = false
                 viewModel.pause()
+                isStarted = false
             }
         }
     }
@@ -89,10 +86,5 @@ class DetailFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = AppData.TITLE[position]
         }.attach()
-    }
-
-    override fun onDestroyView() {
-        timer.cancel()
-        super.onDestroyView()
     }
 }

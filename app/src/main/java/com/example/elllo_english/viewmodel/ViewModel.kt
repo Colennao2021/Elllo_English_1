@@ -20,6 +20,8 @@ import java.util.*
 import kotlin.math.roundToInt
 
 class ViewModel(application: Application) : AndroidViewModel(application) {
+    private lateinit var timer: Timer
+
     var mediaPlayer: MediaPlayer
     var seekBarProcess: MutableLiveData<Int>
     var repository: Repository
@@ -79,9 +81,8 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
         return scripts
     }
 
-    fun prepareAudio(timer: Timer) {
+    fun prepareAudio() {
         AppLogger.info("MediaPlayer")
-
         val audioUrl =
             "https://data.chiasenhac.com/down2/2258/5/2257592-de5bf580/128/Thi%20Tuu%20Hoan%20Nguyet%20Quang%20-%20Tham%20Mat%20Nha.mp3"
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
@@ -89,12 +90,12 @@ class ViewModel(application: Application) : AndroidViewModel(application) {
         mediaPlayer.prepareAsync()
 
         AppLogger.info("MediaPlayer prepare success")
+        timer = Timer()
         mediaPlayer.setOnPreparedListener {
             val timerTask = object : TimerTask() {
                 override fun run() {
                     if (mediaPlayer.duration > 0)
                         seekBarProcess.postValue(((mediaPlayer.currentPosition.toFloat() / mediaPlayer.duration.toFloat()) * 100.0f).roundToInt())
-                    Log.d("tag", mediaPlayer.currentPosition.toString())
                 }
             }
             timer.schedule(timerTask, 0, 500)
