@@ -1,13 +1,13 @@
-package com.example.elllo_english.data
+package com.example.elllo_english.control
 
 
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.elllo_english.data.models.Course
-import com.example.elllo_english.data.models.Grammar
-import com.example.elllo_english.data.models.Level
-import com.example.elllo_english.data.models.Script
+import com.example.elllo_english.models.Course
+import com.example.elllo_english.models.Grammar
+import com.example.elllo_english.models.Level
+import com.example.elllo_english.models.Script
 import com.example.elllo_english.utils.AppData
 
 @androidx.room.Database(
@@ -33,10 +33,9 @@ abstract class Database : RoomDatabase() {
                     Database::class.java,
                     AppData.DATABASE_NAME
                 ).createFromAsset(AppData.DB_PATH)
-                    .allowMainThreadQueries().build()
+                    .build()
                 return instance as Database
             }
         }
     }
-
 }

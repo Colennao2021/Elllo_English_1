@@ -1,4 +1,4 @@
-package com.example.elllo_english.data.models
+package com.example.elllo_english.models
 import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -14,10 +14,10 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) :
     }
 
     override fun createFragment(position: Int): Fragment {
-        when (position) {
-            AppData.SCRIPT -> return ScriptFragment()
-            AppData.GRAMMAR -> return GrammarFragment()
-            else -> return ScriptFragment()
+        return when (position) {
+            AppData.SCRIPT -> ScriptFragment()
+            AppData.GRAMMAR -> GrammarFragment()
+            else -> ScriptFragment()
         }
     }
 }

@@ -7,17 +7,21 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
+import com.example.elllo_english.models.Level
+import com.example.elllo_english.ui.callback.ICLickLevel
 import com.example.elllo_english.ui.adapter.LevelAdapter
 import com.example.elllo_english.utils.AppLogger
 import com.example.elllo_english.viewmodel.ViewModel
 import kotlinx.android.synthetic.main.fragment_level.view.*
 
-class LevelFragment : Fragment() {
+class LevelFragment : Fragment(), ICLickLevel {
     private lateinit var viewModel: ViewModel
     private lateinit var recycleView: RecyclerView
+    private lateinit var icLickLevel: ICLickLevel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,15 +37,20 @@ class LevelFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         AppLogger.info("RecycleView")
-        val adapter = LevelAdapter()
+        val adapter = LevelAdapter(this)
         recycleView.adapter = adapter
         recycleView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         AppLogger.info("ViewModel get all level")
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
-        viewModel.getALlLevel.observe(viewLifecycleOwner, Observer { level ->
+        viewModel.getAllLevel().observe(viewLifecycleOwner, Observer { level ->
             adapter.setListLevel(level)
         })
+    }
+
+    override fun onClickLevel(level: Level) {
+        val action = LevelFragmentDirections.actionLevelFragmentToCourseFragment(level)
+        findNavController().navigate(action)
     }
 }

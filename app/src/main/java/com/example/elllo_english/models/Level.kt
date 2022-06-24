@@ -1,4 +1,4 @@
-package com.example.elllo_english.data.models
+package com.example.elllo_english.models
 
 import android.os.Parcelable
 import androidx.annotation.NonNull
@@ -7,17 +7,17 @@ import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-@Entity(tableName = "course")
-data class Course(
+@Entity(tableName = "level")
+data class Level(
     @PrimaryKey(autoGenerate = true)
     @NonNull
     val id: Int,
     @NonNull
-    val level: Int=0,
+    val name: String,
     @NonNull
-    val name: String="",
+    val image: String,
     @NonNull
-    val url :String="",
+    val url: String,
     @NonNull
-    val state :Int=0
-) :Parcelable
+    val state: Int
+) : Parcelable

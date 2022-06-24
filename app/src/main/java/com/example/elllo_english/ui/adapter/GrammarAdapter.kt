@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
-import com.example.elllo_english.data.models.Grammar
+import com.example.elllo_english.models.Grammar
 import kotlinx.android.synthetic.main.item_grammar.view.*
 
 class GrammarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var grammars: List<Grammar> = emptyList()
+    private var datas: List<Grammar> = emptyList()
 
     fun setListGrammar(tmp: List<Grammar>) {
-        this.grammars = tmp
+        this.datas = tmp
         notifyDataSetChanged()
     }
 
@@ -25,23 +25,20 @@ class GrammarAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is GrammarViewHolder) {
-            holder.bindingData(grammars[position])
+            val currentGrammar = datas[position]
+            holder.point.text = currentGrammar.point
+            holder.title.text = currentGrammar.title
+            holder.example.text = currentGrammar.example
         }
     }
 
     override fun getItemCount(): Int {
-        return grammars.size
+        return datas.size
     }
 
     class GrammarViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val point: TextView = itemView.point_grammar
-        private val title: TextView = itemView.title_grammar
-        private val example: TextView = itemView.example_grammar
-
-        fun bindingData(grammar: Grammar) {
-            point.text = grammar.point
-            title.text = grammar.title
-            example.text = grammar.example
-        }
+        var point: TextView = itemView.findViewById(R.id.point_grammar)
+        var title: TextView = itemView.findViewById(R.id.title_grammar)
+        var example: TextView = itemView.findViewById(R.id.example_grammar)
     }
 }

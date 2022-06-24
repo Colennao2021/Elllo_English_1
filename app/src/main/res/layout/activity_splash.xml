@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.SplashActivity"
-    android:background="@color/primary_color">
+    android:background="@color/primary_color"
+    tools:context=".ui.activity.SplashActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/icielbambola"
         android:text="@string/welcome"
         android:textColor="@color/secondary_color"
         android:textSize="45sp"
         android:textStyle="bold"
-        android:fontFamily="@font/icielbambola"
-        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/image_welcome"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/image_welcome" />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
         android:id="@+id/image_welcome"

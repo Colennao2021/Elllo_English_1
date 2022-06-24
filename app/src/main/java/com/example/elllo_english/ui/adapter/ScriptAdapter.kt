@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
-import com.example.elllo_english.data.models.Script
+import com.example.elllo_english.models.Script
 import kotlinx.android.synthetic.main.item_script.view.*
 
 class ScriptAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var scripts: List<Script> = emptyList()
+    private var datas: List<Script> = emptyList()
 
     fun setListScript(tmp: List<Script>) {
-        this.scripts = tmp
+        this.datas = tmp
         notifyDataSetChanged()
 
     }
@@ -26,22 +26,19 @@ class ScriptAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ScriptViewHolder) {
-            val script = scripts[position]
-            holder.bindingData(script)
+            val currentScript = datas[position]
+            holder.name.text = currentScript.name
+            holder.content.text = currentScript.content
         }
     }
 
     override fun getItemCount(): Int {
-        return scripts.size
+        return datas.size
     }
 
     class ScriptViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val name: TextView = itemView.name_script
-        private val content: TextView = itemView.content_script
+        var name: TextView = itemView.findViewById(R.id.name_script)
+        var content: TextView = itemView.findViewById(R.id.content_script)
 
-        fun bindingData(script: Script) {
-            name.text = script.name
-            content.text = script.content
-        }
     }
 }

@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
-import com.example.elllo_english.data.Repository
+import com.example.elllo_english.control.Repository
 import com.example.elllo_english.ui.adapter.ScriptAdapter
 import com.example.elllo_english.utils.AppLogger
 import com.example.elllo_english.viewmodel.ViewModel
@@ -29,8 +29,8 @@ class ScriptFragment() : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_script, container, false)
-        recycleView = view.findViewById(R.id.script_recycleview)
-        updating = view.findViewById(R.id.updating_script)
+        recycleView = view.findViewById(R.id.recycleview)
+        updating = view.findViewById(R.id.updating)
         warning = view.findViewById(R.id.warning)
         return view
     }
@@ -51,7 +51,7 @@ class ScriptFragment() : Fragment() {
         AppLogger.info("ViewModel get script")
         Repository.courseId = courseId
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
-        viewModel.getScript.observe(viewLifecycleOwner, Observer { scripts ->
+        viewModel.getScript().observe(viewLifecycleOwner, Observer { scripts ->
             if (scripts.isNotEmpty()) {
                 recycleView.visibility = View.VISIBLE
                 updating.visibility = View.GONE

@@ -23,7 +23,7 @@
             app:destination="@id/detailFragment" />
         <argument
             android:name="level"
-            app:argType="com.example.elllo_english.data.models.Level" />
+            app:argType="com.example.elllo_english.models.Level" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
@@ -32,6 +32,6 @@
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="course"
-            app:argType="com.example.elllo_english.data.models.Course" />
+            app:argType="com.example.elllo_english.models.Course" />
     </fragment>
 </navigation>

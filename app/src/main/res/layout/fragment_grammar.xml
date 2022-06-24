@@ -7,14 +7,14 @@
     tools:context=".ui.fragment.GrammarFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/grammar_recycleview"
+        android:id="@+id/recycleview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/updating_grammar"
+        android:id="@+id/updating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"

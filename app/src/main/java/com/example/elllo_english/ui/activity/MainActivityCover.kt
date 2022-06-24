@@ -17,7 +17,7 @@ class MainActivityCover : AppCompatActivity() {
         AppLogger.info("Create toolBar")
         setSupportActionBar(findViewById(R.id.tool_bar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title="Level"
+        supportActionBar?.title = "Level"
         val navController = findNavController(R.id.nav_host_fragment)
         val config = AppBarConfiguration(navController.graph)
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)

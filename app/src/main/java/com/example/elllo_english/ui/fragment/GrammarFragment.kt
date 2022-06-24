@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
-import com.example.elllo_english.data.Repository
+import com.example.elllo_english.control.Repository
 import com.example.elllo_english.ui.adapter.GrammarAdapter
 import com.example.elllo_english.utils.AppLogger
 import com.example.elllo_english.viewmodel.ViewModel
@@ -29,8 +29,8 @@ class GrammarFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_grammar, container, false)
-        recyclerView = view.findViewById(R.id.grammar_recycleview)
-        updating = view.findViewById(R.id.updating_grammar)
+        recyclerView = view.findViewById(R.id.recycleview)
+        updating = view.findViewById(R.id.updating)
         warning = view.findViewById(R.id.warning)
         return view
     }
@@ -51,7 +51,7 @@ class GrammarFragment : Fragment() {
         AppLogger.info("ViewModel get grammar")
         Repository.courseId = courseId
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
-        viewModel.getGrammar.observe(viewLifecycleOwner, Observer { grammars ->
+        viewModel.getGrammar().observe(viewLifecycleOwner, Observer { grammars ->
             if (grammars.isNotEmpty()) {
                 recyclerView.visibility = View.VISIBLE
                 updating.visibility = View.GONE
