@@ -7,6 +7,7 @@ import com.example.elllo.models.Script
 object AppData {
     const val DATABASE_NAME: String = "my_elllo_english.db"
     const val DB_PATH: String = "database/elllo.db"
+    const val ACTIONBAR_lEVEL="Level"
     const val URL_DEFAULT =
         "https://data.chiasenhac.com/down2/2252/1/2251949-8e58e518/128/Born%20Singer%20-%20BTS.mp3"
     const val FRAGMENT_COUNT: Int = 2

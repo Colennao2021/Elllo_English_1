@@ -9,6 +9,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.example.elllo.R
+import com.example.elllo.utils.AppData
 import com.example.elllo.utils.AppLogger
 
 class MainActivityCover : AppCompatActivity() {
@@ -19,7 +20,7 @@ class MainActivityCover : AppCompatActivity() {
         AppLogger.info("Create toolBar")
         setSupportActionBar(findViewById(R.id.tool_bar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "Level"
+        supportActionBar?.title =AppData.ACTIONBAR_lEVEL
         val navController = findNavController(R.id.nav_host_fragment)
         val config = AppBarConfiguration(navController.graph)
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)
