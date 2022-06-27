@@ -2,11 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_elllo_english"
+    android:id="@+id/nav_elllo"
     app:startDestination="@id/levelFragment">
     <fragment
         android:id="@+id/levelFragment"
-        android:name="com.example.elllo_english.ui.fragment.LevelFragment"
+        android:name="com.example.elllo.ui.fragment.LevelFragment"
         android:label="Level"
         tools:layout="@layout/fragment_level">
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/courseFragment"
-        android:name="com.example.elllo_english.ui.fragment.CourseFragment"
+        android:name="com.example.elllo.ui.fragment.CourseFragment"
         android:label="Course"
         tools:layout="@layout/fragment_course">
         <action
@@ -23,15 +23,15 @@
             app:destination="@id/detailFragment" />
         <argument
             android:name="level"
-            app:argType="com.example.elllo_english.models.Level" />
+            app:argType="com.example.elllo.models.Level" />
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.elllo_english.ui.fragment.DetailFragment"
+        android:name="com.example.elllo.ui.fragment.DetailFragment"
         android:label="Detail"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="course"
-            app:argType="com.example.elllo_english.models.Course" />
+            app:argType="com.example.elllo.models.Course" />
     </fragment>
 </navigation>
