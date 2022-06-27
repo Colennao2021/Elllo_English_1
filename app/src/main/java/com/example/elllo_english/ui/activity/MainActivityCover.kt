@@ -1,7 +1,9 @@
 package com.example.elllo_english.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -23,4 +25,13 @@ class MainActivityCover : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.tool_bar)
         toolbar.setupWithNavController(navController, config)
     }
+
+    companion object {
+        fun starter(context: Context) {
+            val intent = Intent(context, MainActivityCover::class.java)
+            context.startActivity(intent)
+        }
+    }
+
+
 }

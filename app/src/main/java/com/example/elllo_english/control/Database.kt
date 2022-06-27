@@ -16,7 +16,6 @@ import com.example.elllo_english.utils.AppData
     exportSchema = true
 )
 abstract class Database : RoomDatabase() {
-
     abstract fun dao(): DAO
 
     companion object {

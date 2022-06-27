@@ -3,6 +3,6 @@ package com.example.elllo_english.ui.callback
 import com.example.elllo_english.models.Level
 
 
-interface ICLickLevel {
+interface IClickLevel {
     fun onClickLevel(level: Level)
 }

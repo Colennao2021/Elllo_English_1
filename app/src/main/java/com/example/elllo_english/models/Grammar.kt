@@ -1,4 +1,5 @@
 package com.example.elllo_english.models
+
 import androidx.annotation.NonNull
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -9,7 +10,7 @@ data class Grammar(
     @NonNull
     val id: Int,
     @NonNull
-    val course :Int,
+    val course: Int,
     @NonNull
     val point: String,
     @NonNull

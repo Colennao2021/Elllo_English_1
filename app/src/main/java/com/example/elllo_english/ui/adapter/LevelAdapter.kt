@@ -9,15 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.elllo_english.R
 import com.example.elllo_english.models.Level
-import com.example.elllo_english.ui.callback.ICLickLevel
+import com.example.elllo_english.ui.callback.IClickLevel
 import kotlinx.android.synthetic.main.item_level.view.*
 
-class LevelAdapter(private val icLickLevel: ICLickLevel) :
+class LevelAdapter(private val iCLickLevel: IClickLevel) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var levels = emptyList<Level>()
+    private var data = emptyList<Level>()
 
     fun setListLevel(listLevel: List<Level>) {
-        this.levels = listLevel
+        this.data = listLevel
         notifyDataSetChanged()
     }
 
@@ -29,26 +29,23 @@ class LevelAdapter(private val icLickLevel: ICLickLevel) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is LevelViewHolder) {
-            val level = levels[position]
-            holder.bindingData(level)
+            val level = data[position]
+            val url = level.image
+            holder.name.text = level.name
+            Glide.with(holder.itemView).load(url).into(holder.image)
+
             holder.itemView.item_level.study.setOnClickListener {
-                icLickLevel.onClickLevel(level)
+                iCLickLevel.onClickLevel(level)
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return levels.size
+        return data.size
     }
 
     class LevelViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val name: TextView = itemView.name_level
-        private val image: ImageView = itemView.image_level
-
-        fun bindingData(level: Level) {
-            val url = level.image
-            name.text = level.name
-            Glide.with(itemView).load(url).into(image)
-        }
+        val name: TextView = itemView.name_level
+        val image: ImageView = itemView.image_level
     }
 }

@@ -11,19 +11,19 @@ class Repository(private val dao: DAO) {
         var courseId: Int = 0
     }
 
-    suspend fun getALlLevel() :List<Level>{
+    suspend fun getALlLevel(): List<Level> {
         return dao.getAllLevel()
     }
 
-    suspend fun getCourse() :List<Course>{
+    suspend fun getCourse(): List<Course> {
         return dao.getCourse(levelId)
     }
 
-    suspend fun getGrammar() :List<Grammar>{
+    suspend fun getGrammar(): List<Grammar> {
         return dao.getGrammar(courseId)
     }
 
-    suspend fun getScript() :List<Script>{
+    suspend fun getScript(): List<Script> {
         return dao.getScript(courseId)
     }
 }

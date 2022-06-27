@@ -9,9 +9,8 @@ import com.example.elllo_english.models.Script
 
 @Dao
 interface DAO {
-
     @Query("select * from course where level = :levelId")
-    suspend fun getCourse(levelId:Int): List<Course>
+    suspend fun getCourse(levelId: Int): List<Course>
 
     @Query("select * from grammar where course = :courseId ")
     suspend fun getGrammar(courseId: Int): List<Grammar>

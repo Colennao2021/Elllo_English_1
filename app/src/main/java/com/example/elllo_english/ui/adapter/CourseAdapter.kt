@@ -7,15 +7,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
 import com.example.elllo_english.models.Course
-import com.example.elllo_english.ui.callback.ICLickCourse
+import com.example.elllo_english.ui.callback.IClickCourse
 import kotlinx.android.synthetic.main.item_course.view.*
 
-class CourseAdapter(private val icLickCourse: ICLickCourse) :
+class CourseAdapter(private val iClickCourse: IClickCourse) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var datas = emptyList<Course>()
+    private var data = emptyList<Course>()
 
     fun setListCourse(listCourse: List<Course>) {
-        this.datas = listCourse
+        this.data = listCourse
         notifyDataSetChanged()
     }
 
@@ -27,16 +27,16 @@ class CourseAdapter(private val icLickCourse: ICLickCourse) :
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is CourseViewHolder) {
-            val currentCourse = datas[position]
+            val currentCourse = data[position]
             holder.name.text = currentCourse.name
             holder.itemView.item_course.setOnClickListener {
-                icLickCourse.onClickCourse(currentCourse)
+                iClickCourse.onClickCourse(currentCourse)
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return datas.size
+        return data.size
     }
 
     class CourseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

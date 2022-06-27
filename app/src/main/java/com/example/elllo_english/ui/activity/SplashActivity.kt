@@ -1,8 +1,6 @@
 package com.example.elllo_english.ui.activity
 
-import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.elllo_english.R
@@ -20,7 +18,7 @@ class SplashActivity : AppCompatActivity() {
     private fun forwardActivity() {
         lifecycleScope.launch {
             delay(2000)
-            startActivity(Intent(this@SplashActivity, MainActivityCover::class.java))
+            MainActivityCover.starter(this@SplashActivity)
             finish()
         }
     }

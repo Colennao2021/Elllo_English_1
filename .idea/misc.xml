@@ -41,16 +41,30 @@
         <entry key="..\:/Android_Project/Elllo_English_1/app/src/main/res/layout/item_grammar.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_Project/Elllo_English_1/app/src/main/res/layout/item_level.xml" value="0.1" />
         <entry key="..\:/Android_Project/Elllo_English_1/app/src/main/res/layout/item_script.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/edit_button_welcome.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/edit_item_course.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/edit_item_level.xml" value="0.244" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/edit_study.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/ic_baseline_pause.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/ic_baseline_play.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/ic_baseline_stop.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/ic_music2.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/ic_music_svgrepo_com.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/ic_volume_mute.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/ic_volume_up.xml" value="0.1795" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/drawable/ic_warning.xml" value="0.1795" />
         <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/activity_splash.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/fragment_course.xml" value="0.36666666666666664" />
-        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/fragment_detail.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/fragment_detail.xml" value="0.33" />
         <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/fragment_grammar.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/fragment_level.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/fragment_script.xml" value="0.36666666666666664" />
         <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/item_course.xml" value="0.36666666666666664" />
-        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/item_grammar.xml" value="0.36666666666666664" />
-        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/item_level.xml" value="0.36666666666666664" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/item_grammar.xml" value="0.33" />
+        <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/item_level.xml" value="0.33" />
         <entry key="..\:/Android_Project/Elllo_English_12/app/src/main/res/layout/item_script.xml" value="0.36666666666666664" />
       </map>
     </option>

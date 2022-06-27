@@ -13,11 +13,11 @@ data class Course(
     @NonNull
     val id: Int,
     @NonNull
-    val level: Int=0,
+    val level: Int = 0,
     @NonNull
-    val name: String="",
+    val name: String = "",
     @NonNull
-    val url :String="",
+    val url: String = "",
     @NonNull
-    val state :Int=0
-) :Parcelable
+    val state: Int = 0
+) : Parcelable

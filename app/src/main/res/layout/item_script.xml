@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
+    android:padding="8dp"
     android:orientation="horizontal"
-    tools:context=".ui.fragment.ScriptFragment">
+    tools:context=".ui.fragment.ScriptFragment"
+    android:id="@+id/item_script">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guiline_0.2"

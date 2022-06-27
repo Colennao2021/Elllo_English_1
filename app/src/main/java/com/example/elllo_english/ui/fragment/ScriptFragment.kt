@@ -17,7 +17,7 @@ import com.example.elllo_english.ui.adapter.ScriptAdapter
 import com.example.elllo_english.utils.AppLogger
 import com.example.elllo_english.viewmodel.ViewModel
 
-class ScriptFragment() : Fragment() {
+class ScriptFragment : Fragment() {
     private lateinit var viewModel: ViewModel
     private lateinit var recycleView: RecyclerView
     private lateinit var updating: TextView
@@ -42,7 +42,7 @@ class ScriptFragment() : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        AppLogger.info("RecycleView")
+        AppLogger.info("RecycleView script")
         val adapter = ScriptAdapter()
         recycleView.adapter = adapter
         recycleView.layoutManager =
@@ -58,7 +58,7 @@ class ScriptFragment() : Fragment() {
                 warning.visibility = View.GONE
                 adapter.setListScript(scripts)
             } else {
-                AppLogger.info("Default script if null")
+                AppLogger.info("Default warning script if null")
                 updating.visibility = View.VISIBLE
                 warning.visibility = View.VISIBLE
                 recycleView.visibility = View.GONE

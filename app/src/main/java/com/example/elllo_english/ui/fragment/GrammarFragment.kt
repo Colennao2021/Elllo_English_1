@@ -1,12 +1,12 @@
 package com.example.elllo_english.ui.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,7 +42,7 @@ class GrammarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        AppLogger.info("Recycleview")
+        AppLogger.info("Recycleview grammar")
         val adapter = GrammarAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager =
@@ -53,12 +53,12 @@ class GrammarFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
         viewModel.getGrammar().observe(viewLifecycleOwner, Observer { grammars ->
             if (grammars.isNotEmpty()) {
-                recyclerView.visibility = View.VISIBLE
                 updating.visibility = View.GONE
                 warning.visibility = View.GONE
+                recyclerView.visibility = View.VISIBLE
                 adapter.setListGrammar(grammars)
             } else {
-                AppLogger.info("Default grammar if null")
+                AppLogger.info("Default warning grammar if null")
                 recyclerView.visibility = View.GONE
                 updating.visibility = View.VISIBLE
                 warning.visibility = View.VISIBLE

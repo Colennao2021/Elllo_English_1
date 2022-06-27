@@ -2,6 +2,6 @@ package com.example.elllo_english.ui.callback
 
 import com.example.elllo_english.models.Course
 
-interface ICLickCourse {
+interface IClickCourse {
     fun onClickCourse(course: Course)
 }

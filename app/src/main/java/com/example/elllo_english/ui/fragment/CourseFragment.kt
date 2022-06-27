@@ -16,13 +16,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.elllo_english.R
 import com.example.elllo_english.control.Repository
 import com.example.elllo_english.models.Course
-import com.example.elllo_english.ui.callback.ICLickCourse
+import com.example.elllo_english.ui.callback.IClickCourse
 import com.example.elllo_english.ui.adapter.CourseAdapter
-import com.example.elllo_english.utils.AppData
 import com.example.elllo_english.utils.AppLogger
 import com.example.elllo_english.viewmodel.ViewModel
 
-class CourseFragment : Fragment(), ICLickCourse {
+class CourseFragment : Fragment(), IClickCourse {
     private lateinit var viewModel: ViewModel
     private lateinit var recycleView: RecyclerView
     private lateinit var updating: TextView
@@ -41,19 +40,18 @@ class CourseFragment : Fragment(), ICLickCourse {
         updating = view.findViewById(R.id.updating)
         warning = view.findViewById(R.id.warning)
         return view
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        AppLogger.info("Recycleview")
+        AppLogger.info("Recycleview grammar")
         adapter = CourseAdapter(this)
         recycleView.adapter = adapter
         recycleView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        AppLogger.info("ViewModel")
+        AppLogger.info("ViewModel get courses")
         Repository.levelId = args.level.id
         viewModel = ViewModelProvider(this).get(ViewModel::class.java)
         viewModel.getCourse().observe(viewLifecycleOwner, Observer { courses ->
@@ -63,6 +61,7 @@ class CourseFragment : Fragment(), ICLickCourse {
                 recycleView.visibility = View.VISIBLE
                 adapter.setListCourse(courses)
             } else {
+                AppLogger.info("Warning if course null")
                 updating.visibility = View.VISIBLE
                 warning.visibility = View.VISIBLE
             }
@@ -70,6 +69,7 @@ class CourseFragment : Fragment(), ICLickCourse {
     }
 
     override fun onClickCourse(course: Course) {
+        AppLogger.info("Item course click")
         val action = CourseFragmentDirections.actionCourseFragmentToDetailFragment(course)
         findNavController().navigate(action)
     }

@@ -5,7 +5,7 @@ import java.util.*
 
 
 object AppLogger {
-    public enum class Level {
+    enum class Level {
         DEBUG, INFO, WARNING, ERROR
     }
 
@@ -28,7 +28,6 @@ object AppLogger {
                  */
                 const val messenger = "[%5s] [%s] [%s_%s(%s)] : %s"
                 const val date = "yyyy-MM-dd HH:mm:ss"
-                const val file = "yyyyMMdd"
             }
         }
     }

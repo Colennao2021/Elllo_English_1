@@ -6,20 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SeekBar
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.widget.ViewPager2
 import com.example.elllo_english.R
+import com.example.elllo_english.control.Repository
 import com.example.elllo_english.ui.adapter.ViewPagerAdapter
 import com.example.elllo_english.utils.AppData
 import com.example.elllo_english.utils.AppLogger
 import com.example.elllo_english.viewmodel.ViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import androidx.lifecycle.Observer
-import java.util.*
 
 class DetailFragment : Fragment() {
     private lateinit var play: Button
@@ -46,34 +45,14 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        AppLogger.info("Update courseId for repository")
         loadCourseID()
+
+        AppLogger.info("Prepare audio from url")
         loadAudio()
+
+        AppLogger.info("Setting show tablayout ")
         loadTablayout()
-    }
-
-    private fun loadAudio() {
-        var isStarted = false
-        seekBar.max = 100
-        viewModel = ViewModelProvider(this).get(ViewModel::class.java)
-        viewModel.seekBarProcess.observe(viewLifecycleOwner, Observer { temp ->
-            seekBar.progress = temp
-        })
-        viewModel.prepareAudio()
-
-        AppLogger.info("Play")
-        play.setOnClickListener {
-            if (!isStarted) {
-                play.setBackgroundResource(R.drawable.ic_baseline_pause)
-                Toast.makeText(requireContext(), "Audio Play", Toast.LENGTH_SHORT).show()
-                viewModel.start()
-                isStarted = true
-            } else if (isStarted) {
-                play.setBackgroundResource(R.drawable.ic_baseline_play)
-                Toast.makeText(requireContext(), "Audio Pause", Toast.LENGTH_SHORT).show()
-                viewModel.pause()
-                isStarted = false
-            }
-        }
     }
 
     private fun loadCourseID() {
@@ -86,5 +65,59 @@ class DetailFragment : Fragment() {
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = AppData.TITLE[position]
         }.attach()
+    }
+
+    private fun loadAudio() {
+        var isStarted = false
+
+        seekBar.max = 100
+
+        AppLogger.info("Load mediaPlayer.currenPosition from viewModel for seekbar")
+        Repository.courseId = args.course.id
+        viewModel = ViewModelProvider(this).get(ViewModel::class.java)
+        viewModel.seekBarProcess.observe(viewLifecycleOwner, Observer { temp ->
+            seekBar.progress = temp
+        })
+
+        AppLogger.info("Get link audio")
+        viewModel.getScript().observe(viewLifecycleOwner, Observer { temps ->
+            if (temps.isEmpty()) {
+                AppLogger.info("Db url lỗi play không pause được")
+                viewModel.prepareAudio(temps[0].audio)
+            } else {
+                viewModel.prepareAudio(AppData.URL_DEFAULT)
+            }
+        })
+
+        AppLogger.info("Play audio")
+        play.setOnClickListener {
+            if (!isStarted) {
+                play.setBackgroundResource(R.drawable.ic_baseline_pause)
+                viewModel.start()
+                isStarted = true
+            } else if (isStarted) {
+                play.setBackgroundResource(R.drawable.ic_baseline_play)
+                viewModel.pause()
+                isStarted = false
+            }
+        }
+
+        AppLogger.info("Audio touch from user")
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    val temp = (progress / 100.0) * viewModel.mediaPlayer.duration
+                    viewModel.mediaPlayer.seekTo(temp.toInt())
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+                //TODO("Not yet implemented")
+            }
+        })
     }
 }

@@ -10,7 +10,7 @@ data class Script(
     @NonNull
     val id: Int,
     @NonNull
-    val course :Int,
+    val course: Int,
     @NonNull
     val audio: String,
     @NonNull
